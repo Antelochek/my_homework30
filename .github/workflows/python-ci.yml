@@ -1,6 +1,6 @@
 name: Python CI/CD
 
-on:  # Триггеры запуска
+on:
   push:
     branches: [ main ]
   pull_request:
@@ -8,25 +8,25 @@ on:  # Триггеры запуска
 
 jobs:
   test:
-    runs-on: ubuntu-latest  # ОС для запуска
+    runs-on: ubuntu-latest
 
     steps:
-    # 1. Загружаем код репозитория
+
     - uses: actions/checkout@v4
 
-    # 2. Устанавливаем Python
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.12"
 
-    # 3. Устанавливаем зависимости (аналог before_script)
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    # 4. Запускаем тесты и линтеры
+
     - name: Run pytest
       run: pytest tests/
 
