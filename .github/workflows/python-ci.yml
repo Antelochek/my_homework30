@@ -28,7 +28,7 @@ jobs:
 
 
     - name: Run pytest
-      run: pytest tests/
+      run: pytest myhw/tests/
 
     - name: Run mypy
       run: mypy myhw/
