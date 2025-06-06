@@ -35,7 +35,6 @@ def test_create_client(client):
     response = client.post("/clients", data=new_client)
     assert response.status_code == 201
 
-
     response = client.get("/clients")
     data = json.loads(response.data)
     assert len(data) == 2
@@ -43,7 +42,8 @@ def test_create_client(client):
 
 def test_create_parking(client):
     """Тест создания новой парковочной зоны"""
-    new_parking = {"address": "New Parking", "opened": True, "count_places": 20}
+    new_parking = {"address": "New Parking", "opened": True,
+                   "count_places": 20}
     response = client.post("/parking", data=new_parking)
     assert response.status_code == 201
 
@@ -73,7 +73,8 @@ def test_park_car(client):
 def test_unpark_car(client):
     """Тест выезда с парковки"""
     # Сначала создаем запись о парковке
-    test_parking = ClientParking(client_id=1, parking_id=1, time_in=datetime.now())
+    test_parking = ClientParking(client_id=1, parking_id=1,
+                                 time_in=datetime.now())
     _db.session.add(test_parking)
     _db.session.commit()
 

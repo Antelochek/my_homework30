@@ -2,7 +2,7 @@ import pytest
 
 from myhw.main.app import create_app
 from myhw.main.app import db as _db
-from myhw.main.models import Client, ClientParking, Parking
+from myhw.main.models import Client, Parking
 
 
 @pytest.fixture

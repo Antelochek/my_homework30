@@ -1,7 +1,6 @@
 from datetime import datetime
 from typing import Any, List
 
-import pytest
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
@@ -52,7 +51,7 @@ def create_app():
 
             parking = (
                 db.session.query(Parking)
-                .filter(Parking.id == parking_id, Parking.opened == True)
+                .filter(Parking.id == parking_id, Parking.opened is True)
                 .first()
             )
 
@@ -71,7 +70,8 @@ def create_app():
             db.session.add(new_record)
             db.session.commit()
 
-            return f"Место на парковке {parking.address} успешно забронировано", 200
+            return (f"Место на парковке {parking.address}"
+                    f" успешно забронировано"), 200
 
     @app.route("/parking", methods=["POST"])
     def add_parking():
@@ -105,14 +105,15 @@ def create_app():
             .filter(
                 ClientParking.client_id == client_id,
                 ClientParking.parking_id == parking_id,
-                ClientParking.time_out == None,
+                ClientParking.time_out is None,
             )
             .first()
         )
 
         if not parking_record:
             raise ValueError(
-                f"Активная парковка для клиента {client_id} на парковке ID {parking_id} не найдена"
+                f"Активная парковка для клиента {client_id} на "
+                f"парковке ID {parking_id} не найдена"
             )
 
         parking_record.time_out = datetime.now()
@@ -123,7 +124,8 @@ def create_app():
             parking.count_available_places = parking.count_places
 
         db.session.commit()
-        return f"клиент {client_id} успешно выехал с парковки {parking.address}", 200
+        return (f"клиент {client_id} успешно выехал с "
+                f"парковки {parking.address}", 200)
 
     @app.route("/clients", methods=["GET"])
     def get_clients():
@@ -135,7 +137,7 @@ def create_app():
     @app.route("/clients/<int:user_id>", methods=["GET"])
     def get_client_id(user_id: int):
         """Получение пользователя по ид"""
-        user: Any  = db.session.query(Client).get(int(user_id))
+        user: Any = db.session.query(Client).get(int(user_id))
         return jsonify(user.to_json()), 200
 
     @app.route("/parking", methods=["GET"])
@@ -159,7 +161,7 @@ def create_app():
     return app
 
 
-GET_ENDPOINTS : List[tuple] = [
+GET_ENDPOINTS: List[tuple] = [
     ("/clients", {}),  # Список клиентов
     ("/clients/1", {}),  # Конкретный клиент
     ("/parking", {}),  # Список парковок

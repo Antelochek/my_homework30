@@ -2,7 +2,7 @@ from typing import Any, Dict
 
 from sqlalchemy import (Boolean, Column, DateTime, ForeignKey, Integer, String,
                         UniqueConstraint, create_engine)
-from sqlalchemy.orm import Mapped, declarative_base, relationship, sessionmaker
+from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
 from .app import db
 
@@ -52,7 +52,8 @@ class ClientParking(db.Model):
     time_out = Column(DateTime, nullable=True)
 
     __table_args__ = (
-        UniqueConstraint("client_id", "parking_id", name="unique_client_parking"),
+        UniqueConstraint("client_id", "parking_id",
+                         name="unique_client_parking"),
     )
 
     client = relationship("Client", back_populates="parkings")
