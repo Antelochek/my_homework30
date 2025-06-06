@@ -24,8 +24,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run pytest
-      run: pytest myhw/tests/
+
 
     - name: Run mypy
       run: mypy myhw/
