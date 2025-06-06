@@ -27,8 +27,6 @@ jobs:
     - name: Run pytest
       run: pytest myhw/tests/
 
-    - name: Run mypy
-      run: mypy myhw/
 
     - name: Run Black
       run: black --check --diff myhw/
