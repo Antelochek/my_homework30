@@ -13,7 +13,7 @@ def app():
     # Устанавливаем контекст приложения
     with _app.app_context():
         _db.create_all()
-        yield _app  # Здесь возвращаем само приложение, а не клиент
+        yield _app
         _db.drop_all()
 
     with _app.app_context():

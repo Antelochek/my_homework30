@@ -35,7 +35,7 @@ def test_create_client(client):
     response = client.post("/clients", data=new_client)
     assert response.status_code == 201
 
-    # Проверяем, что клиент действительно создан
+
     response = client.get("/clients")
     data = json.loads(response.data)
     assert len(data) == 2
