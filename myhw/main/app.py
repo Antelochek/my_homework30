@@ -51,7 +51,7 @@ def create_app():
 
             parking = (
                 db.session.query(Parking)
-                .filter(Parking.id == parking_id, Parking.opened is True)
+                .filter(Parking.id == parking_id, Parking.opened == True)
                 .first()
             )
 
@@ -105,7 +105,7 @@ def create_app():
             .filter(
                 ClientParking.client_id == client_id,
                 ClientParking.parking_id == parking_id,
-                ClientParking.time_out is None,
+                ClientParking.time_out == None,
             )
             .first()
         )
