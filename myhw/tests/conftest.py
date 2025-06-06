@@ -23,24 +23,24 @@ def app():
             name="Test",
             surname="User",
             car_number="A123BC",
-            credit_card="1234567812345678"
+            credit_card="1234567812345678",
         )
         test_parking = Parking(
             address="Test Address",
             opened=True,
             count_places=10,
-            count_available_places=10
+            count_available_places=10,
         )
         _db.session.add(test_client)
         _db.session.add(test_parking)
         _db.session.commit()
 
 
-
 @pytest.fixture
 def client(app):
     client = app.test_client()
     yield client
+
 
 @pytest.fixture
 def db(app):

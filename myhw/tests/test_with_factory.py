@@ -1,5 +1,5 @@
 from .factories import ClientFactory, ParkingFactory
-from  myhw.main.models import Client, Parking, db
+from myhw.main.models import Client, Parking, db
 
 
 def test_create_client(app, db, client):
