@@ -1,5 +1,7 @@
-from .factories import ClientFactory, ParkingFactory
 from myhw.main.models import Client, Parking, db
+
+from .factories import ClientFactory, ParkingFactory
+
 
 # тест 1
 def test_create_client(app, db, client):

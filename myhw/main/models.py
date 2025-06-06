@@ -1,15 +1,7 @@
 from typing import Any, Dict
 
-from sqlalchemy import (
-    Boolean,
-    Column,
-    DateTime,
-    ForeignKey,
-    Integer,
-    String,
-    UniqueConstraint,
-    create_engine,
-)
+from sqlalchemy import (Boolean, Column, DateTime, ForeignKey, Integer, String,
+                        UniqueConstraint, create_engine)
 from sqlalchemy.orm import Mapped, declarative_base, relationship, sessionmaker
 
 from .app import db

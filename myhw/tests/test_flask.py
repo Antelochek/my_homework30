@@ -1,8 +1,8 @@
 import json
 from datetime import datetime
-from myhw.main.app import db as _db
 
-from myhw.main.models import Parking, ClientParking
+from myhw.main.app import db as _db
+from myhw.main.models import ClientParking, Parking
 
 
 def test_get_all_clients(client):
