@@ -7,7 +7,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 db = SQLAlchemy()
-#aaa
+
 
 def create_app():
     app = Flask(__name__)
