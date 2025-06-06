@@ -1,6 +1,6 @@
 import factory
 from faker import Faker
-from  module_29_testing.hw.myhw.main.models import Client, Parking, db
+from  myhw.main.models import Client, Parking, db
 
 fake = Faker()
 
