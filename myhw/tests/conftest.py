@@ -12,7 +12,7 @@ def app():
     _app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///park.db"
     _app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    #1 Устанавливаем контекст приложения
+    # Устанавливаем контекст приложения
     with _app.app_context():
         _db.create_all()
         yield _app
