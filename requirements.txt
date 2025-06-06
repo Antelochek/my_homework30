@@ -1,5 +1,4 @@
 black==21.12b0
-click==8.0.2
 factory_boy==3.3.3
 Faker==37.3.0
 flake8==4.0.1
