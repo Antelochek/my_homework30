@@ -1,9 +1,10 @@
 from datetime import datetime
-from typing import List
+from typing import List, Any
 
 import pytest
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+
 
 db = SQLAlchemy()
 
@@ -115,7 +116,7 @@ def create_app():
                 f"Активная парковка для клиента {client_id} на парковке ID {parking_id} не найдена"
             )
 
-        parking_record.time_out = datetime.now()
+        parking_record.time_out : datetime = datetime.now()
 
         parking.count_available_places += 1
 
@@ -135,7 +136,7 @@ def create_app():
     @app.route("/clients/<int:user_id>", methods=["GET"])
     def get_client_id(user_id: int):
         """Получение пользователя по ид"""
-        user: Client = db.session.query(Client).get(int(user_id))
+        user: Any  = db.session.query(Client).get(int(user_id))
         return jsonify(user.to_json()), 200
 
     @app.route("/parking", methods=["GET"])
@@ -159,7 +160,7 @@ def create_app():
     return app
 
 
-GET_ENDPOINTS = [
+GET_ENDPOINTS : List[tuple] = [
     ("/clients", {}),  # Список клиентов
     ("/clients/1", {}),  # Конкретный клиент
     ("/parking", {}),  # Список парковок
