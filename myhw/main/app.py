@@ -116,7 +116,7 @@ def create_app():
                 f"Активная парковка для клиента {client_id} на парковке ID {parking_id} не найдена"
             )
 
-        parking_record.time_out : datetime = datetime.now()
+        parking_record.time_out = datetime.now()
 
         parking.count_available_places += 1
 
