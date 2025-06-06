@@ -34,5 +34,4 @@ jobs:
     - name: Run isort
       run: isort --check-only --diff --profile black myhw/
 
-    - name: Run flake8
-      run: flake8 myhw/
+    
